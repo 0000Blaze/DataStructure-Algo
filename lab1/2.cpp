@@ -8,10 +8,14 @@ using namespace std;
 //precidance of operators
 int precidance(char op){
     if (op == '^')
+        return 5;
+    else if(op == '/')
+        return 4;
+    else if(op == '*')
         return 3;
-    else if(op == '*' || op == '/')
+    else if(op == '+')
         return 2;
-    else if(op == '+' || op == '-')
+    else if(op == '-')
         return 1;
     else
         return -1;
@@ -106,12 +110,17 @@ void infixToPrefix(string s){
         }
     //when operator encountered
         else {
-            while(st.top()!='N' && precidance(s[var])<= precidance(st.top())){
+            while(st.top()!='N' && precidance(s[var])< precidance(st.top())){
                 char cha= st.top();
                 st.pop();
                 final+=cha;
             }
-            st.push(s[var]);
+            if(precidance(s[var])== precidance(st.top())){
+                st.push(s[var]);
+            }
+            else
+                st.push(s[var]);
+
         }
     }
   //pop remaining elements from stack
@@ -126,7 +135,7 @@ void infixToPrefix(string s){
 
 
 int main(){
-    string exp =  "(a-b/c)*(d/e-f)";
+    string exp =  "(a+b*(c+d/e)^f*g)";      //prefix +a**b^+c/defg
 //choice of infix to postfix or to prefix
     int choice;
     cout<<"Choice:"<<endl<<"1.Infix to postfix"<<endl<<"2.Infix to prefix"<<endl;
