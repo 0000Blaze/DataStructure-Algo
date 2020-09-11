@@ -35,7 +35,8 @@ void checkBrackets(string s){
 int main(){
 //expression to be checked
 //***************HARDCODED********************//
-    string exp = "(a+b)*(k+(s/e))";
+    string exp = "(a+b*(k+(s/e))";
+    cout<<exp<<endl;
     checkBrackets(exp);
 return 0;
 }
