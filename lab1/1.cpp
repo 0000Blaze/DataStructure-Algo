@@ -64,7 +64,7 @@ int main(){
     int size,var;
     cout<<"Enter length of stack needed: ";
     cin>>size;
-    Stack s(size);
+    Stack s(size-1);
 
 //choose operation to perform
     int choice;
