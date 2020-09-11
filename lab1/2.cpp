@@ -1,7 +1,10 @@
 //Convert :
 //a. Infix expression to postfix expression
 //b. Infix expression to prefix expression
-
+/*This program has some defects
+    1.It is unable to perform 2 digit conversions( it cannot differentiate single and multiple digits , all are considered single digits)
+    2.The prefix method used is not pure(p.s. don't know if this is the right word) as it utilizes the postfix
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -31,7 +34,7 @@ void infixToPostfix(string s){
     for(int var=0;var<length;var++){
 
     //character a-z and A-Z case
-        if((s[var]>='a' && s[var]<='z') || (s[var]>='A' && s[var]<='Z'))
+        if((s[var]>='a' && s[var]<='z') || (s[var]>='A' && s[var]<='Z') || isdigit(s[var]))
             final+=s[var];
 
     //when "(" is encountered

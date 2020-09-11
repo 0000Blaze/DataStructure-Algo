@@ -1,5 +1,8 @@
 //Evaluate the postfix expression
-
+/*The drawbacks of this program are:
+    1.It cannot perform multi digit evaluations( all evaluations are done assuming them as single digit)
+    2.Operations of + , - , * , / and ^ ; are only supported
+*/
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -41,6 +44,10 @@ void evaluate(string s){
                     var3= var2/var1;
                     st.push(var3);
                 }
+                else if(s[i] == '^'){
+                    var3 = pow(var2,var1);
+                    st.push(var3);
+                }
             }
         else
             continue;
@@ -49,7 +56,7 @@ void evaluate(string s){
 }
 
 int main(){
-    string exp="43-45-3+*2/";
+    string exp="43-45-3+*2/";   //"293*1641^/5*-8*+";
     cout<<exp<<endl;
     evaluate(exp);
 return 0;
