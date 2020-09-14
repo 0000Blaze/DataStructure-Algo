@@ -6,7 +6,6 @@ using std::cin;
 using std::endl;
 
 /******************************  Queue class  ***************************/
-//default size is 10
 //declaration of class
 class Queue{
 
@@ -80,7 +79,7 @@ void Queue::enqueue(int var){
 //return the top element
 int Queue::peek(){
     if(isEmpty()){
-        cout<<"Queue is empty, overflow condition"<<endl;
+        cout<<"Queue is empty, underflow condition"<<endl;
         exit(EXIT_FAILURE);
     }
 return arr[front];
