@@ -1,6 +1,5 @@
 #include<iostream>
 #define MaxSize 100
-
 using std::cout;
 using std::endl;
 
