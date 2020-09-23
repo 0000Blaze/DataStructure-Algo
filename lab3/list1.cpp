@@ -4,7 +4,6 @@
      ii. The list is implemented by template but the program is hard coded to make a list of int type
     iii. No arrangement is done if overflow is reached and increment of size of list is required
 */
-
 #include<iostream>
 #include "staticList.h"
 using namespace std;
