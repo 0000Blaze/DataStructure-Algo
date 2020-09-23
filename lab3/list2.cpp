@@ -4,7 +4,6 @@
      ii. The list is as a member of Queue class and its functions are utilized accordingly
     iii. The implementation is of a linear queue
 */
-
 #include<iostream>
 #include "staticList.h"
 using namespace std;
