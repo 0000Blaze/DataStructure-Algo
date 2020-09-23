@@ -16,7 +16,15 @@
 
 #include<iostream>
 using namespace std;
+/******************* Linked List class *********************/
+template<class T>
+class LinkedList{
 
+public:
+
+};
+
+/********************** Implementation **************************/
 int main(){
 
 return 0;
