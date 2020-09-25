@@ -15,7 +15,7 @@ class Queue{
     List<T> items;
     int rear,front = 0;
 public:
-    void enque(T var){
+    void enque(T var){      //needs improvement for new static list
         if(front == 0){
             front++;
             items.insrt(var);
@@ -24,12 +24,12 @@ public:
             items.insrt(var,0);
     }
 
-    void deque(){
+    void deque(){                       //needs improvement for new static list
         rear = items.number()-1 ;
         items.del(rear);
     }
 
-    void display(){
+    void display(){             //needs improvement for new static list
         items.display();
     }
 
