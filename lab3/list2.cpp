@@ -1,8 +1,7 @@
 //Queue as List
 /**
-      i. Queue operations is performed by the list defined before
-     ii. The list is as a member of Queue class and its functions are utilized accordingly
-    iii. The implementation is of a linear queue
+      i. Queue operations is performed by the List class inherited functions with some tweaks
+     ii. The implementation is of a linear queue
 */
 #include<iostream>
 #include "staticList.h"
@@ -10,29 +9,46 @@ using namespace std;
 
 /******** Queue by list ********/
 template<class T>
-
-class Queue{
-    List<T> items;
-    int rear,front = 0;
+class Queue: public List<T>{
+    int rear= -1,front= 0;
 public:
-    void enque(T var){      //needs improvement for new static list
-        if(front == 0){
+    //Track tracker;
+    void enque(T var){
+        if(rear == -1){
+            rear++;
+            this->insrt(var,rear);
+        }
+        else{
+            rear++;
+            this->insrt(var,rear);
+        }
+    }
+
+    void deque(){
+        if(!this->ifEmpty()){
+            cout<<"Item dequeued:"<<this->lst[front]<<endl;
+            this->del(front);
             front++;
-            items.insrt(var);
         }
         else
-            items.insrt(var,0);
+            cout<<"Queue is empty"<<endl;
     }
 
-    void deque(){                       //needs improvement for new static list
-        rear = items.number()-1 ;
-        items.del(rear);
+    void display(){
+        if(this->ifEmpty()){
+        cout<<"The list is empty"<<endl;
+        }
+        else{
+            cout<<"The elements are:"<<endl;
+            int num =1;
+            for(int i =0; i<=99;i++){
+                if(this->traker.getIndex(i)){
+                    cout<<num<<". Item: "<<this->lst[i]<<endl;
+                    num++;
+                }
+            }
+        }
     }
-
-    void display(){             //needs improvement for new static list
-        items.display();
-    }
-
 };
 
 /******* Implementation *******/
@@ -51,7 +67,6 @@ int main(){
             }
             else if (choice == '2'){
                 q.deque();
-                cout<<"Item dequeued"<<endl;
             }
             else if (choice == '3'){
                 q.display();
