@@ -9,7 +9,7 @@ using std::endl;
 
 /*********** List tracker class ************/
 class Track{
-    public:
+public:
     int arr[100];
     int point =-1;
 
@@ -30,17 +30,19 @@ void Track::removeFromArr(int var){
     if(point == -1){
         cout<<"Tracker error"<<endl;
     }
-    for(int i =0;i<=point;i++){
-        if(arr[i]== var){
-            this->rearrange(i);
+    else{
+        for(int i =0;i<=point;i++){
+            if(arr[i]== var){
+                this->rearrange(i);
+            }
         }
+        point--;
     }
-    point--;
 }
 
 // rearrange the array to remove an item of index say i
 void Track::rearrange(int i){
-    for(int j=i;i<(point);j++){
+    for(int j=i;j<(point);j++){
         arr[j]=arr[j+1];
     }
 }
@@ -56,9 +58,10 @@ bool Track::getIndex(int i){
 
 template<class T>
 class List{
-    int ptr, i ;
+    int i ;
+protected:
+    int count, ptr;
     T lst[MaxSize];
-    int count;
 public:
     Track traker;
 
@@ -96,8 +99,8 @@ void List<T>::insrt(T var){
 
 template<class T>
 void List<T>::insrt(T var,const int position){
-    if(ifEmpty()){
-        cout<<"List is empty"<<endl;
+    if(ifFull()){
+        cout<<"List is full"<<endl;
     }
     else{
         lst[position]= var;
