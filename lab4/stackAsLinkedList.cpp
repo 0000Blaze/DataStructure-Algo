@@ -31,7 +31,7 @@ void Stack<T>::pop(){
     }
     else{
         T var=LinkedList<T>::deleteBeg();
-        cout<<"Stack Poped:"<<var;
+        cout<<"Stack Poped:"<<var<<endl;
     }
 }
 
