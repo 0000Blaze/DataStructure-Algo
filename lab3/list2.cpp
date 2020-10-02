@@ -14,14 +14,8 @@ class Queue: public List<T>{
 public:
     //Track tracker;
     void enque(T var){
-        if(rear == -1){
-            rear++;
-            this->insrt(var,rear);
-        }
-        else{
-            rear++;
-            this->insrt(var,rear);
-        }
+        rear++;
+        this->insrt(var,rear);
     }
 
     void deque(){
