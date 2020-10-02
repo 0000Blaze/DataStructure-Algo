@@ -40,12 +40,9 @@ public:
 //insert
     void insertBeg(T var,T expo);
     void insertEnd(T var,T expo);
-    /*void insertAfter(Node<T>* Xnode, T var, T expo);
-    void insertBefore(Node<T>* Xnode, T var,T expo);*/
+
 //remove
-    /*T deleteAfter(Node<T>* Xnode);*/
     T deleteBeg();
-    /*T deleteEnd();*/
 //getter
     Node<T>* getNode(int index);
 //display
@@ -83,31 +80,6 @@ void LinkedList<T>::insertEnd(T var, T expo){
     }
 }
 
-/*template<class T>
-void LinkedList<T>::insertBefore(Node<T>* Xnode, T var, T expo){
-    Node<T>* newNode = new Node<T>();
-    newNode->number= var;
-    newNode->expo= expo;
-    if(Xnode == start){ //start insert
-        insertBeg(var,expo);
-        return;
-    }
-    Node<T>* p=start;
-    Node<T>* q= p->next;
-    for(; q != Xnode; p=q, q=p->next);  //traverse to specific node
-    newNode->next = p->next;
-    p->next = newNode;
-}
-
-template<class T>
-void LinkedList<T>::insertAfter(Node<T>* Xnode, T var, T expo){
-    Node<T>* newNode = new Node<T>();
-    newNode->number= var;
-    newNode->expo= expo;
-    newNode->next = Xnode->next;
-    Xnode->next = newNode;
-}*/
-
 template<class T>
 T LinkedList<T>::deleteBeg(){
     if(start == nullptr){
@@ -122,38 +94,6 @@ T LinkedList<T>::deleteBeg(){
     delete temp;
     return num;
 }
-
-/*template<class T>
-T LinkedList<T>::deleteEnd(){
-    if(start == nullptr){
-        cout<<"Linked list is empty"<<endl;
-        exit(EXIT_FAILURE);
-    }
-    Node<T>* p=start;
-    Node<T>* q= nullptr;
-    for(; p->next != nullptr; q= p, p=p->next);  //traverse to last node
-    if(q == nullptr)
-        start = nullptr;
-    else
-        q->next = nullptr;
-    T num = p->number;
-    T expon;
-    cout<<"X^"<<expon = p->expo<<"x";
-    delete p;
-    return num;
-}
-
-template<class T>
-T LinkedList<T>::deleteAfter(Node<T>* Xnode){
-    Node<T>* tempNode;
-    tempNode = Xnode->next;
-    T numb = tempNode->number;
-    Xnode->next = tempNode->next;
-    T expon;
-    cout<<"X^"<<expon = tempNode->expo<<"x";
-    delete tempNode;
-    return numb;
-}*/
 
 template<class T>
 Node<T>* LinkedList<T>::getNode(int index){
@@ -205,38 +145,30 @@ int main(){
     LinkedList<int> poly1;
     LinkedList<int> poly2;
     char choice;
-
 //input first polynomial
     cout<<"Enter value for first polynomial:"<<endl;
     do{
         inputPoly(&poly1);
         cout<<"Continue to input(Y/N):";cin>>choice;
     }while(choice == 'Y' || choice == 'y');
-
     cout<<endl;
-
 //input second polynomial
     cout<<"Enter value for second polynomial:"<<endl;
     do{
         inputPoly(&poly2);
     cout<<"Continue to input(Y/N):";cin>>choice;
     }while(choice == 'Y' || choice == 'y');
-
-
     cout<<endl;
-
     LinkedList<int> poly;
     poly1.display();
     poly2.display();
     cout<<"*****ADDING******"<<endl;
-
     Node<int>* p = new Node<int>();
     p= poly1.start;
     Node<int>* q = new Node<int>();
     q = poly2.start;
     Node<int>* r = new Node<int>();
     r = poly.start;
-
     do{
         if(p->expo > q->expo){
             poly.insertEnd(p->number,p->expo);
@@ -270,7 +202,6 @@ int main(){
             q= q->next;
         }while(q != nullptr);
     }
-
     cout<<"Sum : ";
     poly.display();
 return 0;
