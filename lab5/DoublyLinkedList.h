@@ -6,6 +6,7 @@ using std::endl;
 template<class T>
 class Node{
 public:
+    Node<T>* previous;
     T item;
     Node<T>* next;
 };
@@ -38,9 +39,10 @@ public:
     void insertAfter(Node<T>* Xnode, T var);
     void insertBefore(Node<T>* Xnode, T var);
 //remove
-    T deleteAfter(Node<T>* Xnode);
     T deleteBeg();
     T deleteEnd();
+    T deleteBefore(Node<T>* Xnode);
+    T deleteAfter(Node<T>* Xnode);
 //getter
     Node<T>* getNode(int index);
 //display
@@ -52,11 +54,14 @@ void LinkedList<T>::insertBeg(T var){
     Node<T>* newNode = new Node<T>();
     newNode->item= var;
     if(start == nullptr){       //first insertion
+        newNode->previous = nullptr;
         newNode->next= nullptr;
         start= newNode;
     }
     else{       //other insertions
+        newNode->previous = nullptr;
         newNode->next= start;
+        start->previous = newNode;
         start = newNode;
     }
 }
@@ -67,12 +72,14 @@ void LinkedList<T>::insertEnd(T var){
     newNode->item = var;
     newNode->next = nullptr;
     if(start == nullptr)
+        newNode->previous=nullptr;
         start=newNode;
     else{
         Node<T>* p= start;
         Node<T>* q= p->next;
         for(; q != nullptr; p=q, q=p->next);
         p->next = newNode;
+        newNode->previous = p;
     }
 }
 
@@ -88,7 +95,9 @@ void LinkedList<T>::insertBefore(Node<T>* Xnode, T var){
     Node<T>* q= p->next;
     for(; q != Xnode; p=q, q=p->next);  //traverse to specific node
     newNode->next = p->next;
+    p->next->previous = newNode;
     p->next = newNode;
+    newNode->previous= p;
 }
 
 template<class T>
@@ -96,7 +105,9 @@ void LinkedList<T>::insertAfter(Node<T>* Xnode, T var){
     Node<T>* newNode = new Node<T>();
     newNode->item = var;
     newNode->next = Xnode->next;
+    (Xnode->next)->previous=newNode;
     Xnode->next = newNode;
+    newNode->previous = Xnode;
 }
 
 template<class T>
@@ -108,6 +119,7 @@ T LinkedList<T>::deleteBeg(){
     T itemp;
     Node<T>* temp = start;
     start = start->next;
+    start->previous = nullptr;
     itemp=temp->item;
     delete temp;
     return itemp;
@@ -125,12 +137,27 @@ T LinkedList<T>::deleteEnd(){
     for(; p->next != nullptr; q= p, p=p->next);  //traverse to last node
     if(q == nullptr)
         start = nullptr;
-    else
+    else{
+        q->next->previous = nullptr;
         q->next = nullptr;
+    }
     temp = p->item;
     delete p;
     return temp;
 }
+
+template<class T>
+T LinkedList<T>::deleteBefore(Node<T>* Xnode){
+    T temp;
+    Node<T>* tempNode;
+    tempNode = Xnode->previous;
+    temp = tempNode->item;
+    Xnode->previous = tempNode->previous;
+    Xnode->previous->next = Xnode;
+    delete tempNode;
+    return temp;
+}
+
 
 template<class T>
 T LinkedList<T>::deleteAfter(Node<T>* Xnode){
@@ -139,9 +166,11 @@ T LinkedList<T>::deleteAfter(Node<T>* Xnode){
     tempNode = Xnode->next;
     temp = tempNode->item;
     Xnode->next = tempNode->next;
+    tempNode->next->previous = Xnode;
     delete tempNode;
     return temp;
 }
+
 
 template<class T>
 Node<T>* LinkedList<T>::getNode(int index){
