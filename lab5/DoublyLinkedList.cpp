@@ -14,10 +14,7 @@
 ***/
 #include<iostream>
 #include "DoublyLinkedList.h"
-
 using std::cin;
-using std::endl;
-using std::cout;
 
 int main(){
     LinkedList<int> iList;

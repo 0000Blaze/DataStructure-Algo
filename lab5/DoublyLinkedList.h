@@ -164,7 +164,6 @@ template<class T>
 T LinkedList<T>::deleteAfter(Node<T>* Xnode){
     if(Xnode->next == nullptr){
         deleteEnd();
-        return;
     }
     T temp;
     Node<T>* tempNode;
