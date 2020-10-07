@@ -50,7 +50,7 @@ int main(){
                 break;
         }
         else if(choice=='2'){
-            cout<<"\nWhere to insert:"<<endl<<"1.Begining   2.After Index   3.Ending"<<endl;
+            cout<<"\nWhere to delete:"<<endl<<"1.Begining   2.After Index   3.Ending"<<endl;
             cin>>choice;
             if(choice == '1')
                 iList.deleteBeg();
