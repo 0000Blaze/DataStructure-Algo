@@ -71,9 +71,10 @@ void LinkedList<T>::insertEnd(T var){
     Node<T>* newNode = new Node<T>();
     newNode->item = var;
     newNode->next = nullptr;
-    if(start == nullptr)
+    if(start == nullptr){
         newNode->previous=nullptr;
         start=newNode;
+    }
     else{
         Node<T>* p= start;
         Node<T>* q= p->next;
@@ -161,6 +162,10 @@ T LinkedList<T>::deleteBefore(Node<T>* Xnode){
 
 template<class T>
 T LinkedList<T>::deleteAfter(Node<T>* Xnode){
+    if(Xnode->next == nullptr){
+        deleteEnd();
+        return;
+    }
     T temp;
     Node<T>* tempNode;
     tempNode = Xnode->next;
