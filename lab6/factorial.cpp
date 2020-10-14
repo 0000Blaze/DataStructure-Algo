@@ -13,8 +13,9 @@ using std::endl;
 class Factorial{
     int number;
     long long int answer;
-    long long int fact(int );
+
 public:
+     long long int fact(int );
     void display();
 };
 
