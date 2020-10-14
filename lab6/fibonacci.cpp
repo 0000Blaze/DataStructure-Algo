@@ -3,7 +3,9 @@
 ***/
 
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 class Fibonacci{
     int n,a,b,c,count=1;
