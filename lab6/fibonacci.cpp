@@ -7,8 +7,8 @@ using namespace std;
 
 class Fibonacci{
     int n,a,b,c,count=1;
-public:
     int fibo(int , int);
+public:
     void display();
 };
 
